@@ -6,8 +6,9 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.88.1">
-      <script src="app.js"></script>
-    <title>Look It Up!</title>
+      <script type="module" src="app.js"></script>
+
+      <title>Look It Up!</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/navbar-static/">
 
@@ -70,21 +71,28 @@
     <h1>Definition</h1>
     <p class="lead">Use this part of the page to present your results from the API call.</p>
     <ul class="list-unstyled">
-        <li>This is a list. Your word could go here.</li>
-        <li>It appears completely unstyled.</li>
-        <li>Maybe your multiple definitions of the word are here?</li>
-        <li>Structurally, it's still a list.</li>
-        <li>However, this style only applies to immediate child elements.</li>
-        <li>Nested lists: (maybe synonyms and antonyms?)
-          <ul>
-            <li>are unaffected by this style</li>
-            <li>will still show a bullet</li>
-            <li>and have appropriate left margin</li>
           </ul>
-        </li>
-        <li>This may still come in handy in some situations.</li>
-      </ul>
+    <li>This may still come in handy in some situations.</li>
   </div>
+  <h3>Definition:</h3>
+  <ul>
+
+  </ul>
+    <script>
+        fetch('https://dictionaryapi.dev')
+        .then(res => {
+        return res.json()
+        })
+        .then(data => {
+        data.forEach(definition => {
+        const markup =`<li>{ defineword.word}</li}>;
+
+        document.querySelector('ul').insertAdjacentHTML('beforeend',mark);
+        });
+        console.log(data);
+        })
+        .catch(error => console.log(error));
+      </script>
 </main>
 
 
